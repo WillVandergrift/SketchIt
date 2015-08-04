@@ -1,0 +1,23 @@
+﻿<Window x:Class="SketchIt.ResizeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ResizeWindow" Height="416" Width="544" Loaded="Window_Loaded" Topmost="True">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Gray" Offset="0" />
+                <GradientStop Color="#FF3E3E3E" Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Image Name="imgBottomRight" Stretch="Fill" Source="/SketchIt;component/Images/Arrow-Bottom-Right-64.png" Height="64" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="64" />
+        <Image Name="imgTopLeft" Source="/SketchIt;component/Images/Arrow-Top-Left-64.png" Stretch="Fill" HorizontalAlignment="Left" Width="64" Height="64" VerticalAlignment="Top" />
+        <Image Height="64" HorizontalAlignment="Left" Name="imgBottomLeft" Source="/SketchIt;component/Images/Arrow-Bottom-Left-64.png" Stretch="Fill" VerticalAlignment="Bottom" Width="64" />
+        <Image Height="64" Name="imgTopRight" Source="/SketchIt;component/Images/Arrow-Top-Right-64.png" Stretch="Fill" VerticalAlignment="Top" HorizontalAlignment="Right" Width="64" />
+        <Border BorderBrush="Silver" BorderThickness="1"  Name="borderMenu" CornerRadius="15" MaxWidth="200" MaxHeight="103">
+            <Grid Name="gridMenu">
+                <Button Content="Save" HorizontalAlignment="Left" Margin="6,31,0,31" Name="btnSave" Width="80" Background="{x:Null}" FontSize="16" Foreground="White" Click="btnSave_Click" />
+                <Button Background="{x:Null}" Content="Cancel" FontSize="16" Foreground="White" Name="btnCancel" Width="80" Click="btnCancel_Click" Margin="0,31,6,31" HorizontalAlignment="Right" />
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

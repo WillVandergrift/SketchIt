@@ -1,0 +1,28 @@
+﻿<Window x:Class="SketchIt.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Sketch It" Height="412" Width="605" Background="#00000000" AllowsTransparency="True" WindowStyle="None" WindowState="Normal" Topmost="True" Loaded="Window_Loaded">
+    <Grid>
+
+        <InkCanvas Name="drawingCanvas" Background="#00000000" Cursor="Pen" UseCustomCursor="True" MouseDown="drawingCanvas_MouseDown" MouseMove="drawingCanvas_MouseMove" MouseUp="drawingCanvas_MouseUp">
+            <InkCanvas.ContextMenu>
+                <ContextMenu Height="130" HorizontalAlignment="Left" Margin="264,109,0,0" Name="menu1" VerticalAlignment="Top" ContextMenuService.ShowOnDisabled="True">
+                    <!-- Insert Context Menu Item -->
+                    <MenuItem Header="Insert" Height="32">
+                        <MenuItem.Icon>
+                            <Image Source="Images/Insert-32.png" />
+                        </MenuItem.Icon>
+                        
+                        <!-- Insert Image Context Menu Item -->
+                        <MenuItem Header="Image" Height="32" Click="MenuAddImage_Click">
+                            <MenuItem.Icon>
+                                <Image Source="Images/Picture-32.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                </ContextMenu>
+            </InkCanvas.ContextMenu>
+        </InkCanvas>
+
+    </Grid>
+</Window>

@@ -1,0 +1,115 @@
+﻿<Window x:Class="SketchIt.Toolbar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Sketch It" Height="389" Width="475" Topmost="True" xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon" xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" WindowStyle="ToolWindow" Opacity="1" AllowsTransparency="False" Closing="Window_Closing" Loaded="Window_Loaded">
+    <Grid Background="{x:Null}" Height="346">
+        <telerik:RadToolBar Height="38" VerticalAlignment="Top">
+            <Button x:Name="btnToggle" Foreground="#FF070000" Height="32" BorderThickness="1" Margin="0" FontSize="14" FontWeight="Medium" Click="btnToggle_Click" ToolTip="Enable/Disable Sketch It">
+                <Image Source="/SketchIt;component/Images/Check-32.png" Name="imgEnable" />
+            </Button>
+            <ToggleButton x:Name="btnShowHide" Foreground="#FF070000" Height="32" BorderThickness="1" Margin="0" FontSize="14" FontWeight="Medium" Click="btnShowHide_Click" IsChecked="True" ToolTip="Show/Hide Sketch It">
+                <Image Source="/SketchIt;component/Images/Desktop-32.png" Name="imgShowHide" />
+            </ToggleButton>
+            <telerik:RadSplitButton Name="btnResize" Click="btnResize_Click" ToolTip="Resize the drawing area">
+                <Image Source="/SketchIt;component/Images/ResizeScreen-32.png" Name="imgResizeScreen" Width="28" Height="28" />
+                <telerik:RadSplitButton.DropDownContent>
+                    <telerik:RadContextMenu>
+                        <telerik:RadMenuItem Name="btnResetArea" Header="Reset Drawing Area" ToolTip="Reset the drawing area's size and location" Click="btnResetArea_Click">
+                            <telerik:RadMenuItem.Icon>
+                                <Image Source="/SketchIt;component/Images/Cancel-18.png" Name="imgResetArea" Width="16" Height="24" />
+                            </telerik:RadMenuItem.Icon>
+                        </telerik:RadMenuItem>
+                    </telerik:RadContextMenu>
+                </telerik:RadSplitButton.DropDownContent>
+            </telerik:RadSplitButton>
+            <Button x:Name="btnSettings" Visibility="Collapsed" Foreground="#FF070000" Height="32" BorderThickness="1" Margin="0" FontSize="14" FontWeight="Medium" Click="btnSettings_Click" ToolTip="Resize the drawing surface">
+                <Image Source="/SketchIt;component/Images/Gear-32.png" Name="imgSettings" />
+            </Button>
+            <telerik:RadToolBarSeparator />
+            <ToggleButton x:Name="btnToolPen" Foreground="#FF070000" Height="32" BorderThickness="1" Margin="0" FontSize="14" FontWeight="Medium" IsChecked="True" ToolTip="Pencil Drawing Tool" Click="btnToolPen_Click">
+                <Image Source="/SketchIt;component/Images/Pencil-32.png" Name="imgToolPen" />
+            </ToggleButton>
+            <ToggleButton x:Name="btnToolEraser" Foreground="#FF070000" Height="32" BorderThickness="1" Margin="0" FontSize="14" FontWeight="Medium" Click="btnToolEraser_Click" IsChecked="False" ToolTip="Eraser Tool">
+                <Image Source="/SketchIt;component/Images/Eraser-32.png" Name="imgToolEraser" />
+            </ToggleButton>
+            <ToggleButton x:Name="btnToolSelect" Foreground="#FF070000" Height="32" BorderThickness="1" Margin="0" FontSize="14" FontWeight="Medium" Click="btnToolSelect_Click" IsChecked="False" ToolTip="Selection Tool">
+                <Image Source="/SketchIt;component/Images/Select-32.png" Name="imgToolSelect" />
+            </ToggleButton>
+            <telerik:RadToolBarSeparator />
+            <telerik:RadDropDownButton>
+                <Image Source="/SketchIt;component/Images/Insert-32.png" Name="imgToolInsert" Width="28" Height="28" />
+                <telerik:RadDropDownButton.DropDownContent>
+                    <telerik:RadContextMenu>
+                        <telerik:RadMenuItem Name="btnInsertPicture" Header="Image" Click="btnInsertPicture_Click">
+                            <telerik:RadMenuItem.Icon>
+                                <Image Source="/SketchIt;component/Images/Picture-32.png" Name="imgInsertPicture" Width="18" Height="24" />
+                            </telerik:RadMenuItem.Icon>
+                        </telerik:RadMenuItem>
+                    </telerik:RadContextMenu>
+                </telerik:RadDropDownButton.DropDownContent>
+            </telerik:RadDropDownButton>
+            <Button x:Name="btnOptions" Foreground="#FF070000" Height="32" BorderThickness="1" Margin="0" FontSize="14" FontWeight="Medium" Click="btnOptions_Click" ToolTip="Drawing Options">
+                <Image Source="/SketchIt;component/Images/Palette-32.png" Name="imgOptions" />
+            </Button>
+            <Button x:Name="btnToolClear" Foreground="#FF070000" Height="32" BorderThickness="1" Margin="0" FontSize="14" FontWeight="Medium" Click="btnToolClear_Click" ToolTip="Clear the screen of all drawn items">
+                <Image Source="/SketchIt;component/Images/Screen-off-32.png" Name="imgToolClear" />
+            </Button>       
+            <telerik:RadToolBarSeparator />
+            <Button x:Name="btnToolSave" Foreground="#FF070000" Height="32" BorderThickness="1" Margin="0" FontSize="14" FontWeight="Medium" Click="btnToolSave_Click"  ToolTip="Save a screenshot of the current drawing area">
+                <Image Source="/SketchIt;component/Images/Save-32.png" Name="imgToolSave" />
+            </Button>
+            <telerik:RadToolBar.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF0B4F6C" Offset="1" />
+                    <GradientStop Color="#FF1DBAFF" Offset="0" />
+                </LinearGradientBrush>
+            </telerik:RadToolBar.Background>
+        </telerik:RadToolBar>        
+        <telerik:RadTabControl HorizontalAlignment="Stretch" Margin="0,44,0,48" Name="tabTools" VerticalAlignment="Stretch" HeaderBackground="#00000000">
+            <telerik:RadTabItem Height="24" HorizontalAlignment="Left" Name="tabProperties" VerticalAlignment="Top" Width="120" Background="{x:Null}">
+                <telerik:RadTabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/SketchIt;component/Images/Pencil-32.png" Width="20" Height="20" />
+                        <TextBlock VerticalAlignment="Center" Text="Drawing Options" />
+                    </StackPanel>                                
+                </telerik:RadTabItem.Header>
+                <Grid>
+                    <telerik:RadColorEditor HorizontalAlignment="Left" Name="colorSelector" VerticalAlignment="Top" Width="441" Height="183" SelectedColorChanged="colorSelector_SelectedColorChanged" />
+                    <telerik:RadSlider HorizontalAlignment="Left" Margin="105,190,0,0" Name="sliderSize" VerticalAlignment="Top" Width="336" Height="23" SmallChange="1" Maximum="100" Minimum="1" LargeChange="10" ValueChanged="sliderSize_ValueChanged">
+                        <telerik:RadSlider.Background>
+                            <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                                <GradientStop Color="#FFCECECE" Offset="0" />
+                                <GradientStop Color="Black" Offset="1" />
+                            </LinearGradientBrush>
+                        </telerik:RadSlider.Background>
+                    </telerik:RadSlider>
+                    <Label Content="Drawing Size" Height="28" HorizontalAlignment="Left" Margin="11,185,0,0" Name="lblDrawingSize" VerticalAlignment="Top" Width="88" />
+                </Grid>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem Name="tabSettings">
+                <telerik:RadTabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/SketchIt;component/Images/Gear-321.png" Height="20" Width="20" />
+                        <TextBlock VerticalAlignment="Center" Text="Settings" />
+                    </StackPanel>
+                </telerik:RadTabItem.Header>
+                <Grid>
+                    
+                </Grid>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem Name="tabShortcuts">
+                <telerik:RadTabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/SketchIt;component/Images/keyboard-32.png" Height="20" Width="20" />
+                        <TextBlock VerticalAlignment="Center" Text="Shortcut Keys" />
+                    </StackPanel>
+                </telerik:RadTabItem.Header>
+                <Grid>
+                    <Rectangle Height="49" HorizontalAlignment="Left" Margin="9,30,0,0" Name="rectangle1" Stroke="Black" VerticalAlignment="Top" Width="436" />
+                    <CheckBox Content="Enable Shortcut Keys" Height="16" HorizontalAlignment="Left" Margin="9,8,0,0" Name="chkShortcutEnable" VerticalAlignment="Top" Width="436" />
+                </Grid>
+            </telerik:RadTabItem>
+        </telerik:RadTabControl>
+        <Button Content="Minimize" Height="24" HorizontalAlignment="Right" Margin="0,314,11,0" Name="btnMinimize" VerticalAlignment="Top" Width="91" Click="btnMinimize_Click" />
+    </Grid>
+</Window>
